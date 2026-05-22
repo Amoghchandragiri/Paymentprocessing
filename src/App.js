@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+
+import PaymentForm from "./components/PaymentForm";
+import PaymentList from "./components/PaymentList";
+
+import PaymentService from "./services/PaymentService";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [payments, setPayments] = useState([]);
+
+    const getAllPayments = () => {
+
+        PaymentService.getAllPayments()
+            .then((response) => {
+                setPayments(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getAllPayments();
+    }, []);
+
+    return (
+
+        <div className="container">
+
+            <h1>Payment Processing System</h1>
+
+            <PaymentForm refreshPayments={getAllPayments} />
+
+            <PaymentList payments={payments} />
+
+        </div>
+    );
 }
 
 export default App;
