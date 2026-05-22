@@ -39,3 +39,30 @@ This project allows users to:
 |   SQL Server DB   |
 |   paymentdb       |
 +-------------------+
+
+
+#Tech Stack
+Frontend
+React.js
+Axios
+CSS
+JavaScript
+Backend
+Spring Boot
+Spring Data JPA
+Hibernate
+REST API
+Gradle
+Database
+Microsoft SQL Server
+Features
+Payment Management
+Add new payments
+View all payments
+Store transactions in database
+REST API Integration
+Frontend communicates with backend using Axios
+Backend exposes REST endpoints
+Database Connectivity
+SQL Server integration using JDBC
+Automatic ORM mapping using Hibernate
