@@ -364,21 +364,7 @@ public class CorsConfig {
 - Verified payment form submissions
 - Verified API integration with Axios
 
----
 
-# 📈 Future Enhancements
-
-- JWT Authentication & Authorization
-- Payment Gateway Integration
-- Transaction Analytics Dashboard
-- Email Notifications
-- Role-Based Access Control
-- Docker Deployment
-- Kubernetes Deployment
-- CI/CD Pipeline
-- Microservices Architecture
-
----
 
 # 📚 Learning Outcomes
 
@@ -408,28 +394,7 @@ Suggested screenshots:
 - SQL Server Database Table
 - Postman API Testing
 
----
 
-# 👨‍💻 Author
-
-# Amogh Chandragiri
-
-- Java Backend Developer
-- Spring Boot Developer
-- React Developer
-- SQL & REST API Enthusiast
-
-GitHub Profile:
-
-:contentReference[oaicite:1]{index=1}
-
----
-
-# 📌 Repository Link
-
-:contentReference[oaicite:2]{index=2}
-
----
 
 # 📄 License
 
