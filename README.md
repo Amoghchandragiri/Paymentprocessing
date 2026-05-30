@@ -1,128 +1,91 @@
 # 💳 Payment Processing System
 
-A Full-Stack Payment Processing Management System developed using **React.js**, **Spring Boot**, and **SQL Server**.
+A full-stack **Payment Processing System** built using **Spring Boot**, **Spring Security**, **JWT Authentication**, **Spring Data JPA**, **SQL Server**, and **React.js**.
 
-This application enables users to manage payment transactions through a modern web interface connected to a robust backend API and relational database.
-
----
-
-# 🚀 Project Overview
-
-The Payment Processing System is designed to simulate a real-world financial transaction management platform where users can:
-
-- Add payment transactions
-- View payment records
-- Store transaction details securely in SQL Server
-- Connect frontend and backend using REST APIs
-- Perform CRUD operations efficiently
-
-This project demonstrates complete Full-Stack Development using enterprise-level technologies.
+This project demonstrates secure payment transaction management with user authentication, authorization, REST APIs, and database integration.
 
 ---
 
-# 🏗️ System Architecture
+## 🚀 Features
 
-```text
-+----------------------+
-|   React Frontend     |
-|     Port : 3000      |
-+----------+-----------+
-           |
-           | Axios HTTP Requests
-           v
-+----------------------+
-|  Spring Boot Backend |
-|     Port : 8080      |
-+----------+-----------+
-           |
-           | JPA / Hibernate
-           v
-+----------------------+
-|    SQL Server DB     |
-|      paymentdb       |
-+----------------------+
-```
+### Authentication & Security
+- User Registration
+- User Login
+- Password Encryption using BCrypt
+- JWT Token Generation
+- Spring Security Integration
+- Protected API Endpoints
+
+### Payment Management
+- Create Payment Transactions
+- View All Transactions
+- Track Transaction Details
+- Store Payment Records in SQL Server
+- RESTful API Architecture
+
+### Database
+- Microsoft SQL Server Integration
+- JPA/Hibernate ORM
+- Automatic Entity Mapping
+- Repository Pattern
 
 ---
 
-# 🛠️ Tech Stack
+# 🏗️ Tech Stack
+
+## Backend
+- Java 17
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Hibernate
+- JWT (JSON Web Token)
+- Lombok
 
 ## Frontend
 - React.js
 - Axios
-- JavaScript
-- HTML5
-- CSS3
-
-## Backend
-- Spring Boot
-- Spring Data JPA
-- Hibernate ORM
-- REST APIs
-- Gradle
+- Bootstrap / CSS
 
 ## Database
 - Microsoft SQL Server
 
-## Tools & IDEs
-- IntelliJ IDEA
-- VS Code
-- SQL Server Management Studio (SSMS)
-- Git & GitHub
-- Postman
-
----
-
-# ✨ Features
-
-## ✅ Payment Management
-- Add new payment transactions
-- View all stored payments
-- Persist records in SQL Server database
-
-## ✅ REST API Integration
-- Frontend communicates with backend using Axios
-- Backend exposes REST endpoints using Spring Boot
-
-## ✅ Database Connectivity
-- SQL Server integration using JDBC Driver
-- ORM mapping using Hibernate & JPA
-
-## ✅ Full Stack Architecture
-- React frontend
-- Spring Boot backend
-- SQL Server database
+## Build Tool
+- Gradle
 
 ---
 
 # 📂 Project Structure
 
 ```text
-Paymentprocessing/
+payment-processing-system/
 │
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/example/paymentprocessing/
-│   │   │
-│   │   │   ├── controller/
-│   │   │   ├── service/
-│   │   │   ├── repository/
-│   │   │   ├── entity/
-│   │   │   ├── config/
-│   │   │   └── PaymentprocessingApplication.java
-│   │   │
-│   │   └── resources/
-│   │       └── application.properties
-│
-├── payment-frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── App.js
-│   │   └── index.js
+├── backend/
+│   ├── controller/
+│   │   ├── AuthController.java
+│   │   └── PaymentController.java
 │   │
+│   ├── entity/
+│   │   ├── User.java
+│   │   └── Payment.java
+│   │
+│   ├── repository/
+│   │   ├── UserRepository.java
+│   │   └── PaymentRepository.java
+│   │
+│   ├── security/
+│   │   ├── JwtUtil.java
+│   │   ├── JwtFilter.java
+│   │   └── SecurityConfig.java
+│   │
+│   ├── service/
+│   │
+│   └── PaymentprocessingApplication.java
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── App.js
 │   └── package.json
 │
 └── README.md
@@ -130,166 +93,50 @@ Paymentprocessing/
 
 ---
 
-# 🗄️ Database Schema
+# ⚙️ Installation & Setup
 
-## payments Table
-
-| Column Name | Data Type |
-|-------------|------------|
-| id | bigint |
-| sender_name | varchar |
-| receiver_name | varchar |
-| amount | decimal |
-| transaction_type | varchar |
-| status | varchar |
-
----
-
-# ⚙️ Backend Architecture
-
-## 🔹 Controller Layer
-Handles incoming HTTP requests and API endpoints.
-
-### Example:
-```java
-@RestController
-@RequestMapping("/api/payments")
-public class PaymentController {
-}
-```
-
----
-
-## 🔹 Service Layer
-Contains business logic implementation.
-
-### Example:
-```java
-@Service
-public class PaymentService {
-}
-```
-
----
-
-## 🔹 Repository Layer
-Handles database operations using JPA Repository.
-
-### Example:
-```java
-@Repository
-public interface PaymentRepository extends JpaRepository<Payment, Long> {
-}
-```
-
----
-
-## 🔹 Entity Layer
-Maps Java objects to SQL Server database tables.
-
-### Example:
-```java
-@Entity
-@Table(name = "payments")
-public class Payment {
-}
-```
-
----
-
-# 🎨 Frontend Architecture
-
-## 🔹 PaymentForm.js
-- Accepts payment details from user
-- Sends POST request to backend
-
-## 🔹 PaymentList.js
-- Displays payment records
-- Fetches data from backend APIs
-
-## 🔹 PaymentService.js
-- Handles Axios API calls
-- Connects frontend with backend
-
----
-
-# 🔗 REST API Endpoints
-
-## ✅ Get All Payments
-
-```http
-GET /api/payments
-```
-
----
-
-## ✅ Create Payment
-
-```http
-POST /api/payments
-```
-
-### Sample Request Body
-
-```json
-{
-  "senderName": "Amogh",
-  "receiverName": "Rahul",
-  "amount": 5000,
-  "transactionType": "UPI",
-  "status": "SUCCESS"
-}
-```
-
----
-
-# 🔧 Installation & Setup Guide
-
-# 1️⃣ Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/Amoghchandragiri/Paymentprocessing.git
-```
+git clone https://github.com/yourusername/payment-processing-system.git
 
-Repository:
-
-:contentReference[oaicite:0]{index=0}
-
----
-
-# 2️⃣ Backend Setup
-
-## Open backend project
-
-```bash
-cd Paymentprocessing
+cd payment-processing-system
 ```
 
 ---
 
-## Configure Database
+## 2️⃣ Configure SQL Server
 
-Update `application.properties`
+Create Database:
+
+```sql
+CREATE DATABASE paymentdb;
+```
+
+---
+
+## 3️⃣ Configure application.properties
 
 ```properties
 spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=paymentdb;encrypt=true;trustServerCertificate=true
 
-spring.datasource.username=YOUR_USERNAME
-spring.datasource.password=YOUR_PASSWORD
+spring.datasource.username=your_username
+spring.datasource.password=your_password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 ```
 
 ---
 
-## Run Spring Boot Application
+## 4️⃣ Run Backend
 
 ```bash
 ./gradlew bootRun
 ```
 
-Backend Server:
+Application starts at:
 
 ```text
 http://localhost:8080
@@ -297,31 +144,17 @@ http://localhost:8080
 
 ---
 
-# 3️⃣ Frontend Setup
-
-## Open frontend folder
+## 5️⃣ Run Frontend
 
 ```bash
-cd payment-frontend
-```
+cd frontend
 
----
-
-## Install Dependencies
-
-```bash
 npm install
-```
 
----
-
-## Start React Application
-
-```bash
 npm start
 ```
 
-Frontend Server:
+Frontend starts at:
 
 ```text
 http://localhost:3000
@@ -329,73 +162,250 @@ http://localhost:3000
 
 ---
 
-# 🌐 CORS Configuration
+# 🔐 Authentication APIs
 
-```java
-@Configuration
-public class CorsConfig {
+## Register User
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
+### Request
 
-        return new WebMvcConfigurer() {
+```http
+POST /auth/register
+```
 
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
+### Request Body
 
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
-                        .allowedMethods("*");
-            }
-        };
-    }
+```json
+{
+    "username":"amogh",
+    "password":"password123"
+}
+```
+
+### Response
+
+```text
+User Registered Successfully
+```
+
+---
+
+## Login User
+
+### Request
+
+```http
+POST /auth/login
+```
+
+### Request Body
+
+```json
+{
+    "username":"amogh",
+    "password":"password123"
+}
+```
+
+### Response
+
+```json
+{
+    "token":"eyJhbGciOiJIUzI1NiJ9..."
 }
 ```
 
 ---
 
-# 🧪 Testing
+# 💰 Payment APIs
 
-## Backend Testing
-- Tested APIs using Postman
-- Verified database insertion in SQL Server
+## Create Payment
 
-## Frontend Testing
-- Verified payment form submissions
-- Verified API integration with Axios
+### Request
 
+```http
+POST /payments
+```
 
+### Headers
 
-# 📚 Learning Outcomes
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+### Request Body
+
+```json
+{
+    "senderName":"Amogh",
+    "receiverName":"Rahul",
+    "amount":1000,
+    "transactionType":"UPI"
+}
+```
+
+### Response
+
+```json
+{
+    "id":1,
+    "senderName":"Amogh",
+    "receiverName":"Rahul",
+    "amount":1000,
+    "status":"SUCCESS"
+}
+```
+
+---
+
+## Get All Payments
+
+### Request
+
+```http
+GET /payments
+```
+
+### Headers
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+### Response
+
+```json
+[
+  {
+    "id":1,
+    "senderName":"Amogh",
+    "receiverName":"Rahul",
+    "amount":1000
+  }
+]
+```
+
+---
+
+# 🗄️ Database Schema
+
+## User Table
+
+| Column | Type |
+|----------|----------|
+| id | BIGINT |
+| username | VARCHAR |
+| password | VARCHAR |
+| role | VARCHAR |
+
+---
+
+## Payment Table
+
+| Column | Type |
+|----------|----------|
+| id | BIGINT |
+| sender_name | VARCHAR |
+| receiver_name | VARCHAR |
+| amount | DOUBLE |
+| status | VARCHAR |
+| transaction_type | VARCHAR |
+| created_at | TIMESTAMP |
+
+---
+
+# 🧪 Sample Workflow
+
+### Step 1
+
+Register User
+
+```http
+POST /auth/register
+```
+
+### Step 2
+
+Login User
+
+```http
+POST /auth/login
+```
+
+### Step 3
+
+Receive JWT Token
+
+```json
+{
+  "token":"eyJhbGc..."
+}
+```
+
+### Step 4
+
+Use Token in Authorization Header
+
+```http
+Authorization: Bearer eyJhbGc...
+```
+
+### Step 5
+
+Create Payment Transaction
+
+```http
+POST /payments
+```
+
+### Step 6
+
+View All Transactions
+
+```http
+GET /payments
+```
+
+---
+
+# 🔒 Security Implementation
+
+- BCrypt Password Encryption
+- JWT Based Authentication
+- Stateless Session Management
+- Spring Security Filters
+- Protected REST Endpoints
+- Role-Based Foundation Ready for Future Enhancements
+
+---
+
+# 📈 Future Enhancements
+
+- Role Based Access Control (ADMIN/USER)
+- Payment Status Tracking
+- Transaction History Dashboard
+- Refund Management
+- Email Notifications
+- OTP Verification
+- Swagger API Documentation
+- Docker Deployment
+- CI/CD Pipeline
+- Microservices Architecture
+- Payment Gateway Integration (Razorpay/Stripe)
+
+---
+
+# 🎯 Learning Outcomes
 
 This project demonstrates:
 
-- Full-Stack Web Development
-- REST API Development
-- CRUD Operations
-- SQL Server Integration
-- Spring Boot Backend Development
-- React State Management
-- Axios API Integration
-- JPA & Hibernate ORM
-- Client-Server Communication
+- Spring Boot REST API Development
+- Spring Security Authentication
+- JWT Authorization
+- Database Integration using JPA/Hibernate
+- SQL Server Connectivity
+- Full Stack Development with React
+- Secure Password Storage
 - Enterprise Application Architecture
 
 ---
 
-# 📸 Screenshots
-
-## Add screenshots here
-
-Suggested screenshots:
-- React Frontend UI
-- Payment Form
-- Payment Records Table
-- SQL Server Database Table
-- Postman API Testing
-
-
-
-# 📄 License
-
-This project is developed for learning, academic, and portfolio purposes.
