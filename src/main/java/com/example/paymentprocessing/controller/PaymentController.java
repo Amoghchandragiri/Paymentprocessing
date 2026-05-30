@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
-@CrossOrigin(origins = "http://localhost:3000")
 public class PaymentController {
 
     private final PaymentRepository repository;
@@ -24,6 +23,12 @@ public class PaymentController {
 
     @PostMapping
     public Payment savePayment(@RequestBody Payment payment) {
+
+        System.out.println("POST REQUEST RECEIVED");
+        System.out.println(payment.getSenderName());
+        System.out.println(payment.getReceiverName());
+        System.out.println(payment.getAmount());
+
         return repository.save(payment);
     }
 }

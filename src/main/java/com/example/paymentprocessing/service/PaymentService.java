@@ -3,6 +3,7 @@ package com.example.paymentprocessing.service;
 import com.example.paymentprocessing.entity.Payment;
 import com.example.paymentprocessing.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,4 +40,15 @@ public class PaymentService {
 
         return paymentRepository.save(payment);
     }
+
+    @Transactional
+    public Payment savePayment(Payment payment) {
+
+        if(payment.getAmount() <= 0) {
+            throw new RuntimeException("Invalid Amount");
+        }
+
+        return paymentRepository.save(payment);
+    }
 }
+
